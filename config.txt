@@ -1,0 +1,80 @@
+{
+	"format": 2,
+	"timezone": 11,
+	"device": {
+		"name": "IotaWatt",
+		"version": 3,
+		"channels": "7",
+		"refvolts": 2.5,
+		"chanaref": [
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		],
+		"chanaddr": [
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7
+		],
+		"burden": [
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		]
+	},
+	"inputs": [
+		{
+			"channel": 0,
+			"type": "VT",
+			"cal": 21.23,
+			"phase": 0,
+			"name": "Voltage",
+			"model": "SILICORE/SLA40910-4AS",
+			"vref": 0,
+			"signed": 1
+		},
+		{
+			"channel": 1,
+			"name": "Input_1",
+			"type": "CT",
+			"model": "SCT013-015",
+			"phase": 3,
+			"turns": 2000,
+			"cal": "15.0",
+			"vchan": 0,
+			"signed": 1
+		},
+		{
+			"channel": 2,
+			"name": "Input_2",
+			"type": "CT",
+			"model": "SCT013-015",
+			"phase": 3,
+			"turns": 2000,
+			"cal": "15.0",
+			"vchan": 0,
+			"signed": 1
+		},
+		null,
+		null,
+		null,
+		null
+	],
+	"outputs": [],
+	"server": {
+		"type": "none"
+	},
+	"update": "MAJOR"
+}
