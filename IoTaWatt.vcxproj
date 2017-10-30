@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
+    <RootNamespace>IoTaWatt</RootNamespace>
+    <ProjectName>IoTaWatt</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)IoTaWatt\Firmware\IotaWatt;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\ESP8266WiFi\src;$(ProjectDir)deps\libraries\WiFiManager;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\ESP8266WebServer\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\DNSServer\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\ESP8266mDNS;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\ESP8266HTTPClient\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\ESP8266httpUpdate\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\SPI;$(ProjectDir)deps\libraries\RTClib;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\SD\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\Wire;$(ProjectDir)deps\libraries\ArduinoJson\src;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\Ticker;$(ProjectDir)deps\libraries\Crypto;$(ProjectDir)deps\libraries\Crypto\utility;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries\SD\src\utility;$(ProjectDir)arduino-1.8.5\libraries;$(ProjectDir)deps\hardware\esp8266com\esp8266\libraries;$(ProjectDir)deps\libraries;$(ProjectDir)deps\hardware\esp8266com\esp8266\cores\esp8266;$(ProjectDir)deps\hardware\esp8266com\esp8266\cores\esp8266\libb64;$(ProjectDir)deps\hardware\esp8266com\esp8266\cores\esp8266\spiffs;$(ProjectDir)deps\hardware\esp8266com\esp8266\cores\esp8266\umm_malloc;$(ProjectDir)deps\hardware\esp8266com\esp8266\variants\nodemcu;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\sdk\include;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\sdk\lwip\include;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\sdk\libc\xtensa-lx106-elf\include;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\xtensa-lx106-elf\xtensa-lx106-elf\include\c++\4.8.2;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\xtensa-lx106-elf\xtensa-lx106-elf\include\c++\4.8.2\xtensa-lx106-elf;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\xtensa-lx106-elf\xtensa-lx106-elf\include;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\xtensa-lx106-elf\lib\gcc\xtensa-lx106-elf\4.8.2\include;$(ProjectDir)deps\hardware\esp8266com\esp8266\tools\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ProjectDir)..\..\..\__vm\.IotaWatt.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>__ESP8266_ESp8266__;__ESP8266_ESP8266__;__ets__;ICACHE_FLASH;F_CPU=80000000L;LWIP_OPEN_SRC;ARDUINO=10805;ARDUINO_ESP8266_NODEMCU;ARDUINO_ARCH_ESP8266;ESP8266;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="VisualMicro" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="IoTaWatt\Firmware\IotaWatt\IotaWatt.ino">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\IotaInputChannel.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\IotaLog.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\IotaScript.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\IotaWatt.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\msgLog.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\samplePower.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\updater.h" />
+    <ClInclude Include="IoTaWatt\Firmware\IotaWatt\webServer.h" />
+    <ClInclude Include="__vm\.IoTaWatt.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\dataLog.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\eMonService.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\getConfig.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\GetFeedData.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\influxDB.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\IotaLog.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\IotaScript.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\Loop.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\msgLog.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\samplePower.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\Setup.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\timeServices.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\updater.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\webServer.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\WiFi.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
