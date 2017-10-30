@@ -92,5 +92,8 @@
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\WiFi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\pvoutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

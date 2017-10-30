@@ -1,0 +1,993 @@
+# This clang-format definition was created to best mimic the format I saw in existing code
+# for IoTaWatt
+#
+# Formatting options for clang-format can be found at:
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+
+---
+Language:        Cpp
+#BasedOnStyle:  WebKit
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AccessModifierOffset
+#----------------------------------------------------------------------------------------------------------------------------------
+AccessModifierOffset: -2
+
+# Where to align public, protected and private declarations relative to an indent from the opening brace
+# class MyClass
+# {
+# public:   // Common option 1 : AccessModifierOffset == -4 (IndentWidth = 4)
+#   public: // Common option 2 : AccessModifierOffset == -2 (IndentWidth = 4)
+#     void Func();
+# };
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignAfterOpenBracket
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignAfterOpenBracket: DontAlign
+
+# When we have to wrap function call params, control how we put them on the next line (indented or not and one per line or not):
+# // Option1: Align
+# FunctionWithLongName(int argument1, int argument2,
+#                      int argument33, int argument44);
+# 
+# // Option2: DontAlign
+# FunctionWithLongName(int argument1, int argument2,
+#     int argument33, int argument44);
+# 
+# // Option3: AlwaysBreak
+# Function(
+#     int argument1,
+#     int argument2,
+#     int argument3);
+# 
+# Options are:
+# * Align : Aligns following lines to the opening "(", this often produces code far on the right of the screen that is difficult to read
+# * DontAlign : Indents after max params on each line
+# * AlwaysBreak : Breaks after (
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignConsecutiveAssignments
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignConsecutiveAssignments: false
+
+# If true, then aligns on the = operator
+# int aaaa = 12;
+# int b    = 23;
+# int ccc  = 23;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignConsecutiveDeclarations
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignConsecutiveDeclarations: false
+
+# If true, then aligns the names of the consecuitive declarations like below
+# int         aaaa = 12;
+# float       b = 23;
+# std::string ccc = 23;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignEscapedNewlinesLeft
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignEscapedNewlinesLeft: true
+
+# Where to put the \ character on escaped newlines
+#
+# // AlignEscapedNewlinesLeft: true
+# #define SOME_MACRO(Arg) \
+#     DoSomething1(Arg); \
+#     DoSomething2(Arg);
+#
+# // AlignEscapedNewlinesLeft: false
+# #define SOME_MACRO(Arg)                                                                                             \
+#     DoSomething1(Arg);                                                                                              \
+#     DoSomething2(Arg);
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignOperands
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignOperands:   false
+
+# // If true aligns when it needs to split over multiple lines:
+# int aaa = bbbbbbbbbbbbbbb +
+#           ccccccccccccccc;
+#
+# // If false doesn't bother to try and align, just indents
+# int aaa = bbbbbbbbbbbbbbb +
+#     ccccccccccccccc;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlignTrailingComments
+#----------------------------------------------------------------------------------------------------------------------------------
+AlignTrailingComments: true
+
+# true:                                   false:
+# int a;     // My comment a      vs.     int a; // My comment a
+# int b = 2; // comment  b                int b = 2; // comment about b
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowAllParametersOfDeclarationOnNextLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Allow putting all parameters of a function declaration onto the next line even if BinPackParameters is false.
+#
+#    true:                                   false:
+#    myFunction(                     vs.     myFunction(foo, bar, plop);
+#        foo, bar, plop);
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowShortBlocksOnASingleLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowShortBlocksOnASingleLine: true
+
+# this allows if (a) { return; } to be put on a single line.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowShortCaseLabelsOnASingleLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowShortCaseLabelsOnASingleLine: false
+
+# Permits case label and code in the same line if small enough
+# true:                                   false:
+# switch (a)                      vs.     switch (a) 
+# {                                       {
+# case 1: x = 1; break;                   case 1:
+# case 2: return;                           x = 1;
+# }                                         break;
+#                                         case 2:
+#                                           return;
+#                                         }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowShortFunctionsOnASingleLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowShortFunctionsOnASingleLine: All
+
+# Merge impl onto a single line like: void f() { foo(); }
+# All : always do it where possible
+# Inline : Only do for inline functions
+# None : Never do it
+# Empty : Only do it for empty function implementations
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowShortIfStatementsOnASingleLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowShortIfStatementsOnASingleLine: true
+
+# If true, if (a) return; can be put on a single line.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AllowShortLoopsOnASingleLine
+#----------------------------------------------------------------------------------------------------------------------------------
+AllowShortLoopsOnASingleLine: true
+
+# If true, while (true) continue; can be put on a single line.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlwaysBreakAfterDefinitionReturnType (Deprecated)
+#----------------------------------------------------------------------------------------------------------------------------------
+AlwaysBreakAfterDefinitionReturnType: None
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlwaysBreakAfterReturnType
+#----------------------------------------------------------------------------------------------------------------------------------
+AlwaysBreakAfterReturnType: None
+
+# // Do we put a new line after the return type of a function. For example:
+# int
+# function(float f);
+#
+# One of:
+# None: Never
+# All: Always do it
+# TopLevel: Only for function at "top-level" includes in namespaces but not inside classes
+# AllDefinitions: Always for definitions of functions but not declarations of functions
+# TopLevelDefinitions: Always for top level definitions but not declarations
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlwaysBreakBeforeMultilineStrings
+#----------------------------------------------------------------------------------------------------------------------------------
+AlwaysBreakBeforeMultilineStrings: false
+
+# true:                                  false:
+# aaaa =                         vs.     aaaa = "bbbb"
+#     "bbbb"                                    "cccc";
+#     "cccc";
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# AlwaysBreakTemplateDeclarations
+#----------------------------------------------------------------------------------------------------------------------------------
+AlwaysBreakTemplateDeclarations: true
+
+# true:                                  false:
+# template <typename T>          vs.     template <typename T> class C {};
+# class C {};
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BinPackArguments
+#----------------------------------------------------------------------------------------------------------------------------------
+BinPackArguments: true
+
+# If false, a function call’s arguments will either be all on the same line or will have one line each. Otherwise 
+# attempts to pack as many args on each line
+#
+# // true:
+# void f() 
+# {
+#   f(aaaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaaaaaaa,
+#     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa);
+# }
+#
+# // false:
+# void f() 
+# {
+#   f(aaaaaaaaaaaaaaaaaaaa,
+#     aaaaaaaaaaaaaaaaaaaa,
+#     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa);
+# }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BinPackParameters
+#----------------------------------------------------------------------------------------------------------------------------------
+BinPackParameters: true
+
+# If false, a function declaration’s or function definition’s parameters will either all be on the same line or will have one line each.
+#
+# // true:
+# void f(int aaaaaaaaaaaaaaaaaaaa, int aaaaaaaaaaaaaaaaaaaa,
+#        int aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa) {}
+#
+# // false:
+# void f(int aaaaaaaaaaaaaaaaaaaa,
+#        int aaaaaaaaaaaaaaaaaaaa,
+#        int aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa) {}
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakBeforeBraces
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakBeforeBraces: Custom
+
+# One of the following (See https://clang.llvm.org/docs/ClangFormatStyleOptions.html for more detail):
+#
+# Of these the only that are consistent are Attach and Allman. All others have variations for different types of decls
+#
+# Attach : Never break for braces. I.e. always like void Func() { instead of "{" on next line
+# Linux
+# Mozilla
+# Stroustrup
+# Allman : Always breaks never have opening "{" on same line
+# GNU
+# WebKit : Only break before functions all uses Attach
+# Custom
+#
+# If Custom, then uses the following:
+BraceWrapping:   
+  AfterClass:      false
+  AfterControlStatement: false
+  AfterEnum:       false
+  AfterFunction:   false
+  AfterNamespace:  true
+  AfterObjCDeclaration: true
+  AfterStruct:     false
+  AfterUnion:      false
+  BeforeCatch:     false
+  BeforeElse:      true
+  IndentBraces:    false
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakBeforeBinaryOperators
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakBeforeBinaryOperators: All
+
+# Determines how to wrap long binary operators.
+# One of None, NonAssignment, All
+#
+# None: Break after operators.
+#
+#    LooooooooooongType loooooooooooooooooooooongVariable =
+#        someLooooooooooooooooongFunction();
+#
+#    bool value = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa +
+#                         aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ==
+#                     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa &&
+#                 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa >
+#                     ccccccccccccccccccccccccccccccccccccccccc;
+#
+# NonAssignment: Break before operators that aren’t assignments.
+#
+#    LooooooooooongType loooooooooooooooooooooongVariable =
+#        someLooooooooooooooooongFunction();
+#
+#    bool value = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                         + aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                     == aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                 && aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                        > ccccccccccccccccccccccccccccccccccccccccc;
+#
+# All: Break before operators.
+#
+#    LooooooooooongType loooooooooooooooooooooongVariable
+#        = someLooooooooooooooooongFunction();
+#
+#    bool value = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                         + aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                     == aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                 && aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#                        > ccccccccccccccccccccccccccccccccccccccccc;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakBeforeInheritanceComma
+#----------------------------------------------------------------------------------------------------------------------------------
+#BreakBeforeInheritanceComma: false
+
+
+#    If true, in the class inheritance expression clang-format will *always* break before : and , if there is multiple inheritance.
+#    This includes if the inheritance does not go over the maximum line length
+#
+#    true:                                  false:
+#    class MyClass                  vs.     class MyClass : public X, public Y {
+#        : public X                         };
+#        , public Y {
+#    };
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakBeforeTernaryOperators
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakBeforeTernaryOperators: true
+
+# If true, ternary operators will be placed after line breaks.
+# // true:
+# veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongDescription
+#     ? firstValue
+#     : SecondValueVeryVeryVeryVeryLong;
+# 
+# // false:
+# veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongDescription ?
+#     firstValue :
+#     SecondValueVeryVeryVeryVeryLong;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakConstructorInitializersBeforeComma
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakConstructorInitializersBeforeComma: false
+
+# Always break constructor initializers before commas and align the commas with the colon. If false, may be single line or if 
+# over line length appears as below
+#
+#    true:                                  false:
+#    MyClass::MyClass()             vs.     class MyClass::MyClass()
+#        : member1()                            : member1(), 
+#        , member2()                              member2(),
+#        , member3()                              member3()
+#    {                                      {
+#    };                                     };
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakAfterJavaFieldAnnotations (Ignored)
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakAfterJavaFieldAnnotations: false
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# BreakStringLiterals
+#----------------------------------------------------------------------------------------------------------------------------------
+BreakStringLiterals: true
+
+# Allow breaking string literals over multiple lines when formatting.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ColumnLimit
+#----------------------------------------------------------------------------------------------------------------------------------
+ColumnLimit:     120
+
+# Can be 0 indiciate no limit, otherwise puts a limit on how long a line can be.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ConstructorInitializerAllOnOneLineOrOnePerLine
+#----------------------------------------------------------------------------------------------------------------------------------
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# If the constructor initializers don’t fit on a line, put each initializer on its own line. This option interacts 
+# with BreakConstructorInitializersBeforeComma
+#
+# // true:
+# SomeClass::SomeClass() : aaaaaaaa(aaaaaaaa), aaaaaaaa(aaaaaaaa), aaaaaaaa(aaaaaaaaaaaaaaaaaaaaaaaaa) {}
+# 
+# // OR:
+# SomeClass::SomeClass()
+#     : aaaaaaaa(aaaaaaaa),
+#       aaaaaaaa(aaaaaaaa),
+#       aaaaaaaa(aaaaaaaaaaaaaaaaaaaaaaaaa) 
+# {
+# }
+# 
+# // false:
+# // Will permit a mixture of one or more per line like bin-packing
+# SomeClass::SomeClass()
+#     : aaaaaaaa(aaaaaaaa), aaaaaaaa(aaaaaaaa),
+#       aaaaaaaa(aaaaaaaaaaaaaaaaaaaaaaaaa) {
+# }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ConstructorInitializerIndentWidth
+#----------------------------------------------------------------------------------------------------------------------------------
+ConstructorInitializerIndentWidth: 4
+
+# The number of characters to use for indentation of constructor initializer lists.
+# See also: IndentWidth
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ContinuationIndentWidth
+#----------------------------------------------------------------------------------------------------------------------------------
+ContinuationIndentWidth: 2
+
+# // Example continuation of 2
+# int i =         //  VeryVeryVeryVeryVeryLongComment
+#   longFunction( // Again a long comment
+#     arg);
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# Cpp11BracedListStyle
+#----------------------------------------------------------------------------------------------------------------------------------
+Cpp11BracedListStyle: false
+
+# C++11 braced lists are formatted like function calls would be formatted in their place. 
+#
+# If the braced list follows a name (e.g. a type or variable name), clang-format formats as if the {} were the 
+# parentheses of a function call with that name. If there is no name, a zero-length name is assumed.
+#
+# true:                                  false:
+# vector<int> x{1, 2, 3, 4};     vs.     vector<int> x{ 1, 2, 3, 4 };
+# vector<T> x{{}, {}, {}, {}};           vector<T> x{ {}, {}, {}, {} };
+# f(MyMap[{composite, key}]);            f(MyMap[{ composite, key }]);
+# new int[3]{1, 2, 3};                   new int[3]{ 1, 2, 3 };
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# DerivePointerAlignment
+#----------------------------------------------------------------------------------------------------------------------------------
+DerivePointerAlignment: false
+
+# If true, analyze the formatted file for the most common alignment of & and *. Pointer and reference alignment styles 
+# are going to be updated according to the preferences found in the file. PointerAlignment is then used only as fallback.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PointerAlignment
+#----------------------------------------------------------------------------------------------------------------------------------
+PointerAlignment: Left
+
+# Left: Align pointer to the left.
+#     int* a;
+# 
+# Right: Align pointer to the right.
+#     int *a;
+# 
+# Middle: Align pointer in the middle.
+#     int * a;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# IndentCaseLabels
+#----------------------------------------------------------------------------------------------------------------------------------
+IndentCaseLabels: true
+
+# Determines if the case labels are indented from the switch block
+# false:                                 true:
+# switch (fool) {                vs.     switch (fool) {
+# case 1:                                  case 1:
+#   bar();                                   bar();
+#   break;                                   break;
+# default:                                 default:
+#   plop();                                  plop();
+# }                                      }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# IndentWidth
+#----------------------------------------------------------------------------------------------------------------------------------
+IndentWidth:     2
+
+# The number of columns to use for indentation.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# IndentWrappedFunctionNames
+#----------------------------------------------------------------------------------------------------------------------------------
+IndentWrappedFunctionNames: true
+
+# Indent if a function definition or declaration is wrapped after the type.
+# // true:
+# LoooooooooooooooooooooooooooooooooooooooongReturnType
+#     LoooooooooooooooooooooooooooooooongFunctionDeclaration();
+# 
+# // false:
+# LoooooooooooooooooooooooooooooooooooooooongReturnType
+# LoooooooooooooooooooooooooooooooongFunctionDeclaration();
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# FixNamespaceComments
+#----------------------------------------------------------------------------------------------------------------------------------
+#FixNamespaceComments: false
+
+#    If true, clang-format adds missing namespace end comments and fixes invalid existing ones.
+#
+#    true:                                  false:
+#    namespace a {                  vs.     namespace a {
+#    foo();                                 foo();
+#    } // namespace a;                      }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# KeepEmptyLinesAtTheStartOfBlocks
+#----------------------------------------------------------------------------------------------------------------------------------
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+#     If true, the empty line at the start of blocks is kept.
+# 
+#     true:                                  false:
+#     if (foo) {                     vs.     if (foo) {
+#                                              bar();
+#       bar();                               }
+#     }
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# MaxEmptyLinesToKeep
+#----------------------------------------------------------------------------------------------------------------------------------
+MaxEmptyLinesToKeep: 1
+
+# The maximum number of consecutive empty lines to keep.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# NamespaceIndentation
+#----------------------------------------------------------------------------------------------------------------------------------
+NamespaceIndentation: Inner
+
+# The type of indentation used for namespaces.
+# One of: None, Inner, All
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyBreakBeforeFirstCallParameter
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyBreakBeforeFirstCallParameter: 19
+
+# The penalty for breaking a function call after call(.
+# I find with lamdas it does a bad job of breaking up lamdas
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyBreakComment
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyBreakComment: 300
+
+# The penalty for each line break introduced inside a comment.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyBreakFirstLessLess
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyBreakFirstLessLess: 120
+
+# The penalty for breaking before the first <<.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyBreakFirstLessLess
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyBreakString: 1000
+
+# The penalty for each line break introduced inside a string literal.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyExcessCharacter
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyExcessCharacter: 1000000
+
+# The penalty for each character outside of the column limit.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# PenaltyReturnTypeOnItsOwnLine
+#----------------------------------------------------------------------------------------------------------------------------------
+PenaltyReturnTypeOnItsOwnLine: 60
+
+# Penalty for putting the return type of a function onto its own line.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ReflowComments
+#----------------------------------------------------------------------------------------------------------------------------------
+ReflowComments:  true
+
+# false:
+# // veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongComment with plenty of information
+# /* second veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongComment with plenty of information */
+# 
+# true:
+# // veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongComment with plenty of
+# // information
+# /* second veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongComment with plenty of
+#  * information */
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SortIncludes
+#----------------------------------------------------------------------------------------------------------------------------------
+SortIncludes:    false
+
+# If true, clang-format will sort #includes. This uses IncludeCategories and then alphabetical
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpaceAfterCStyleCast
+#----------------------------------------------------------------------------------------------------------------------------------
+SpaceAfterCStyleCast: false
+
+# true:                                  false:
+# (int)i;                        vs.     (int) i;
+#
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpaceAfterTemplateKeyword
+#----------------------------------------------------------------------------------------------------------------------------------
+#SpaceAfterTemplateKeyword: true
+
+# If true, a space will be inserted after the 'template' keyword.
+#
+# true:                                  false:
+# template <int> void foo();     vs.     template<int> void foo();
+#
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpaceBeforeAssignmentOperators
+#----------------------------------------------------------------------------------------------------------------------------------
+SpaceBeforeAssignmentOperators: true
+
+#     If false, spaces will be removed before assignment operators.
+# 
+#     true:                                  false:
+#     int a = 5;                     vs.     int a=5;
+#     a += 42                                a+=42;
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpaceBeforeParens
+#----------------------------------------------------------------------------------------------------------------------------------
+SpaceBeforeParens: Never
+
+# Defines in which cases to put a space before opening parentheses.
+# One of: Never, ControlStatements, Always
+# I.e. space between if () instead of if() for control and Func() or Func () for functions
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpaceInEmptyParentheses
+#----------------------------------------------------------------------------------------------------------------------------------
+SpaceInEmptyParentheses: false
+
+# If true, spaces may be inserted into ().
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesBeforeTrailingComments
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesBeforeTrailingComments: 1
+
+# The number of spaces before trailing line comments (// - comments).
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesInAngles
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesInAngles:  false
+
+# If true, spaces will be inserted after < and before > in template argument lists.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesInContainerLiterals
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesInContainerLiterals: false
+
+# If true, spaces are inserted inside container literals (e.g. ObjC and Javascript array and dict literals).
+#
+# true:                                  false:
+# var arr = [ 1, 2, 3 ];         vs.     var arr = [1, 2, 3];
+# f({a : 1, b : 2, c : 3});              f({a: 1, b: 2, c: 3});
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesInCStyleCastParentheses
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesInCStyleCastParentheses: false
+
+# If true, spaces may be inserted into C style casts.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesInParentheses
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesInParentheses: false
+
+# If true, spaces will be inserted after ( and before ).
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# SpacesInSquareBrackets
+#----------------------------------------------------------------------------------------------------------------------------------
+SpacesInSquareBrackets: false
+
+# If true, spaces will be inserted after [ and before ]. Lambdas or unspecified size array declarations will not be affected.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# TabWidth
+#----------------------------------------------------------------------------------------------------------------------------------
+TabWidth:        2
+
+# The number of columns used for tab stops.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# UseTab
+#----------------------------------------------------------------------------------------------------------------------------------
+UseTab:          Never
+
+# Possible values:
+# 
+# Never: Never use tab.
+# ForIndentation: Use tabs only for indentation.
+# ForContinuationAndIndentation: Use tabs only for line continuation and indentation.
+# Always: Use tabs whenever we need to fill whitespace that spans at least from one tab stop to the next one.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ObjCBlockIndentWidth
+#----------------------------------------------------------------------------------------------------------------------------------
+ObjCBlockIndentWidth: 4
+ObjCSpaceAfterProperty: true
+ObjCSpaceBeforeProtocolList: true
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# JavaScriptQuotes
+#----------------------------------------------------------------------------------------------------------------------------------
+JavaScriptQuotes: Leave
+
+# In javascript do we use " or ' to quote strings. One of:
+# Leave, Single, Double
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# JavaScriptWrapImports
+#----------------------------------------------------------------------------------------------------------------------------------
+JavaScriptWrapImports: true
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# DisableFormat (Ignored)
+#----------------------------------------------------------------------------------------------------------------------------------
+DisableFormat:   false
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ExperimentalAutoDetectBinPacking (Ignored)
+#----------------------------------------------------------------------------------------------------------------------------------
+ExperimentalAutoDetectBinPacking: false
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# CommentPragmas (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+CommentPragmas:  '^ IWYU pragma:'
+
+# A regular expression that describes comments with special meaning, which should not be split into lines or otherwise changed.
+# CommentPragmas:  '^ IWYU pragma:'
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# ForEachMacros (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+
+# A vector of macros that should be interpreted as foreach loops instead of as function calls.
+#
+# These are expected to be macros of the form:
+# FOREACH(<variable-declaration>, ...)
+# <loop-body>
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# IncludeCategories (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+IncludeCategories: 
+  - Regex:           '^<.*\.h>'
+    Priority:        1
+  - Regex:           '^<.*>'
+    Priority:        2
+  - Regex:           '.*'
+    Priority:        3
+
+# Regular expressions denoting the different #include categories used for ordering #includes.
+# 
+# These regular expressions are matched against the filename of an include (including the <> or “”) in order. 
+# The value belonging to the first matching regular expression is assigned and #includes are sorted first according 
+# to increasing category number and then alphabetically within each category.
+# 
+# If none of the regular expressions match, INT_MAX is assigned as category. The main header for a source file 
+# automatically gets category 0. so that it is generally kept at the beginning of
+# the #includes (http://llvm.org/docs/CodingStandards.html#include-style). 
+# However, you can also assign negative priorities if you have certain headers that always need to be first.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# IncludeIsMainRegex (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+IncludeIsMainRegex: '(_test)?'
+
+# Specify a regular expression of suffixes that are allowed in the file-to-main-include mapping.
+#
+# When guessing whether a #include is the “main” include (to assign category 0, see above), use this regex of 
+# allowed suffixes to the header stem. A partial match is done, so that: - “” means “arbitrary suffix” - “$” 
+# means “no suffix”
+#
+# For example, if configured to “(_test)?$”, then a header a.h would be seen as the “main” include in both a.cc 
+# and a_test.cc.
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# MacroBlockBegin/MacroBlockEnd (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+MacroBlockBegin: '^NS_MAP_BEGIN$'
+MacroBlockEnd:   '^NS_MAP_END$'
+
+#     A regular expression matching macros that start a block.
+# 
+#     # With:
+#     MacroBlockBegin: "^NS_MAP_BEGIN|\
+#     NS_TABLE_HEAD$"
+#     MacroBlockEnd: "^\
+#     NS_MAP_END|\
+#     NS_TABLE_.*_END$"
+# 
+#     NS_MAP_BEGIN
+#       foo();
+#     NS_MAP_END
+# 
+#     NS_TABLE_HEAD
+#       bar();
+#     NS_TABLE_FOO_END
+# 
+#     # Without:
+#     NS_MAP_BEGIN
+#     foo();
+#     NS_MAP_END
+# 
+#     NS_TABLE_HEAD
+#     bar();
+#     NS_TABLE_FOO_END
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# Standard (Project Specific)
+#----------------------------------------------------------------------------------------------------------------------------------
+Standard:        Auto
+
+# One of Cpp03, Cpp11, Auto
+
+
+...

@@ -102,6 +102,7 @@
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\IotaScript.cpp" />
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\Loop.cpp" />
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\msgLog.cpp" />
+    <ClCompile Include="IoTaWatt\Firmware\IotaWatt\pvoutput.cpp" />
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\samplePower.cpp" />
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\Setup.cpp" />
     <ClCompile Include="IoTaWatt\Firmware\IotaWatt\timeServices.cpp" />
