@@ -13,3 +13,6 @@
 [submodule "deps/libraries/ArduinoJson"]
 	path = deps/libraries/ArduinoJson
 	url = https://github.com/bblanchon/ArduinoJson.git
+[submodule "deps/arduinolibs"]
+	path = deps/arduinolibs
+	url = https://github.com/rweather/arduinolibs.git
