@@ -243,3 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+arduino-1.8.5
+deps/libraries/Crypto/
