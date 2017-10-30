@@ -1,0 +1,3 @@
+[submodule "IoTaWatt"]
+	path = IoTaWatt
+	url = ssh://git@github.com/bjcosta/IoTaWatt.git
