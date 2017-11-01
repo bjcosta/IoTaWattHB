@@ -138,7 +138,7 @@ AllowAllParametersOfDeclarationOnNextLine: false
 #----------------------------------------------------------------------------------------------------------------------------------
 # AllowShortBlocksOnASingleLine
 #----------------------------------------------------------------------------------------------------------------------------------
-AllowShortBlocksOnASingleLine: true
+AllowShortBlocksOnASingleLine: false
 
 # this allows if (a) { return; } to be put on a single line.
 
@@ -427,7 +427,7 @@ BreakAfterJavaFieldAnnotations: false
 #----------------------------------------------------------------------------------------------------------------------------------
 # BreakStringLiterals
 #----------------------------------------------------------------------------------------------------------------------------------
-BreakStringLiterals: true
+BreakStringLiterals: false
 
 # Allow breaking string literals over multiple lines when formatting.
 
