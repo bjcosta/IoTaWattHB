@@ -1,0 +1,10 @@
+(module MountingHole2.0mm locked (layer F.Cu) (tedit 5A29F293)
+  (fp_text reference MOUNT5 (at 0 3.175) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value MountingHoleM2Panhead (at 0 -3.81) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_circle (center 0 0) (end 2.54 0) (layer F.SilkS) (width 0.15))
+  (pad "" np_thru_hole circle (at 0 0) (size 4.5 4.5) (drill 2.45) (layers *.Cu *.Mask))
+)

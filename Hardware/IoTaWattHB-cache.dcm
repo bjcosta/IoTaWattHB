@@ -1,0 +1,25 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MCP3008
+D A/D Converter, 10-Bit, 8-Channel, SPI Interface , 2.7V-5.5V
+K 12bit ADC Reference Single Supply SPI 8CH
+F http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf
+$ENDCMP
+#
+$CMP MCP3208
+D A/D Converter, 12-Bit, 8-Channel, SPI Interface , 2.7V-5.5V
+K 12bit ADC Reference Single Supply SPI 8ch
+F http://ww1.microchip.com/downloads/en/DeviceDoc/21298c.pdf
+$ENDCMP
+#
+$CMP SN75240_TVS_Diode
+D Schottky diode
+K diode Schottky
+$ENDCMP
+#
+$CMP TR05S3V3
+D Positive 500mA Switching Regulator, Fixed Output 3.3V
+K Voltage Regulator 500mA 3.3V Positive
+$ENDCMP
+#
+#End Doc Library

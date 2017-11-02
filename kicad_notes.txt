@@ -1,0 +1,96 @@
+Need to follow:
+	https://hackaday.com/2017/05/18/kicad-best-practises-library-management/
+	How to Make KiCAD Footprints Local and Project-Unique
+
+
+* I followed this to install KiCad libs locally (Always use remote github in new version):
+http://oldcomputer.info/log/index.php?id=20161026182231-making-kicad-work-offline
+
+
+References I looked at:
+* https://en.wikibooks.org/wiki/Kicad/eeschema/General_Commands
+
+KiCad annoyances:
+* Copy/Paste WOW!!!
+	Cant copy between schematics, instead append sheet then delete!
+	
+* No separate select + command, instead:
+	** Left select : Move
+	** Shift + Left Select : Copy
+	** Ctrl + Left Select : Drag
+	** Alt + Left Select : Rotate
+	** Ctrl + Shift + Left Select : Delete
+* Many things cause complete redraw (For example del component takes 5 sec, when want to delete a few things)
+* @todo Check this : Moving components in schematic disconnects their wire links!
+* @todo Verify : Weird doesn't show power ports on components.
+* @todo Verify : How to manage placing multiple parts of same component
+* No "search" for footprints by name, need to know what library it is in
+* No "measurement" tool in footprint editor. Often want to check existing components and need to do it all manually
+* Wont let you import design rules file loke other software. PCB fab houses provide these files often with their limitations
+
+
+
+
+2x15 pin NodeMCU 
+grid using 1.27 mm default
+
+1400 mil?
+2.54 * 15 = 
+
+525 pix
+85 pix
+W
+440 pix between pin 1 center and 15 center 
+19.05 + 16.51 = 35.56 distance between center pin 1 and pin 15
+
+453 - 166 = distance between middle inside pins = 287 pix
+
+287 pix = ?? mm
+440 pix = 35.65 mm
+
+?? = 287 * 35.65 / 440 = 23.25352272727273
+
+
+x = 900 mils
+1.27 = 50mils
+x = 22.86 mm
+
+
+x mm = Ymils * 1.27 / 50
+
+0.635
+
+
+SOIC-16_ADAPTER_3.9x9.9mm_Pitch1.27mm
+
+PDIP 7.62 OR 10.16 wide
+
+spec say 0.310 inches = 7.62mm
+and the adapter is a 10.16mm DIP
+
+
+Multiple footprints for single component
+Hi,
+
+I am trying to create a prototype PCB which can be populated with different package types for the same component. 
+
+For example, it uses the MCP3208 chip which comes in a SOIC-16 or a DIP-16 package.
+
+These correspond to the standard KiCad footprints:
+* Housings_DIP:DIP-16_W7.62mm 
+* Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm
+
+Basically, I want others to be free to choose the SMT or THT package to populate the board with and not force a specific package.
+
+What would be the best way to achieve this is in KiCad?
+
+I started creating my own footprint that includes both other footprints with a track drawn between them, but thought there might be another way to achieve this using the standard footprints.
+
+
+
+
+
+
+
+
+

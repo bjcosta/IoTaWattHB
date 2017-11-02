@@ -1,0 +1,11 @@
+* Reference no load with auto
+* Reference no load zoom on upper peak
+* Reference no load with auto (but regulator attached)
+* Reference with load with auto
+* Reference with load on upper peak
+* Output reference with load
+* Output reference with no load
+* DC out
+* Output reference with no load (Fixed amp gain)
+* Ref all running
+* Input all running

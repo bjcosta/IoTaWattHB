@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name IoTaWattHB)(type KiCad)(uri C:/brendon/IoTaWattHB/Hardware/lib_fp.pretty)(options "")(descr ""))
+)

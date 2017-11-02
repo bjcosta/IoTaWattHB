@@ -1,0 +1,19 @@
+All loaded using switching regul
+1 : 
+2: 
+3 : opamp out using switching reg
+4 : opamp out using switching reg (scaled smaller)
+5 : opamp out lower wave zoom
+6 : input from plugpack
+7 : input from plugpack with zoom lower wave
+8,9: diff input no load
+10: diff input no load NO CAPS input
+11 : diff input no load NO CAPS output+input
+12 : opamp out no load no caps
+13 : opamp out no load no caps (just bottom)
+14 : opamp out LOADED no caps
+15 : opamp out LOADED no caps (zoom in single wave)
+	when connected to the ADC, looks very fuzzy. Seams ADC has impact pulling voltage down
+	when reconnect outcap, the fuzzing is much less
+16 : with outcap, showing light fuzzing from ADC
+17: no output cap, showing big fuzzing from ADC

@@ -1,3 +1,19 @@
-* Create script to setup SD card (FAT formatted no MBR, config.txt in root, all other files in IotaWatt directory)
+Docs:
+* Add photos and log of work done and things learnt
 
+Hardware:
+* Verify HiZ GPIO10 input for pushbutton switch
+* Consider I2C temperature/humidity sensor:
+** I added a I2C header to the board for this future extension
+** http://akizukidenshi.com/download/ds/aosong/AM2321_e.pdf
+** https://www.adafruit.com/product/374
+
+Software:
+* Saw problem with pvoutput when big delay in sending
+	12/8/17 06:22:39 pvoutput: Resending pvoutput data.
+	12/8/17 06:22:39 pvoutput: Posting for time: 1511145900 path: pvoutput.org:80/service/r2/addstatus.jsp?d=20171120&t=13:45&v1=131.72&v2=14.36&v3=230.67&v4=34.16&v6=170.30&c1=0&n=0 With key: 25d765379054a57fdb129269344ebfdb97436082 and systemId: 54871
+	12/8/17 06:22:40 pvoutput: POST FAILED code: 400 message: 400 response: Bad request 400: Date is older than 14 days [20171120]
+	12/8/17 06:22:40 pvoutput: Pushing data to PVOutput failed, trying again in 60 sec
+* Create script to setup SD card (FAT formatted no MBR, config.txt in root, all other files in IotaWatt directory)
+* Add log cycling like syslog where creates new log and keeps one old log so we dont truncate completely. I.e. If rotating iota.log, first rm iota.log.1, cp iota.log iota.log.1, rm iota.log then recreate iota.log
 

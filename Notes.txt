@@ -1,0 +1,74 @@
+Project notes
+
+-------------------------
+PCB Manufacturer decision
+
+Looking at selection website: https://pcbshopper.com/
+
+Decided to choose EasyEDA, its limits we specified at:
+https://easyeda.com/Doc/Tutorial/PCBOrder.htm
+
+I verified the limits I set were within EasyEDA limits
+
+I choose to export protel gerber file extensions and had to rename the IoTaWattHB-Edge.Cuts.gm1 to IoTaWattHB-Edge.Cuts.gml
+
+
+
+-------------------------
+Pushbutton switch on GPIO
+
+I think if we can configure the NodMCU GPIO10 to be Input with Hi-Z (66k apparently) when not flashing, and to OUTPUT which can provide 3.3V @12mA when flashing, then we might be able to safely use the switch and effectively "ignore" presses on it while flashing.
+
+12mA per GPIO max, if we want to put limiting resistor for say 6mA @ 3.3V
+
+I have added hardware to try and permit us to multiplex the usage of the GPIO10 for this purpose.
+
+@todo Add link for GPIO10 usage examples previously discussed on forums of NodeMCU. Maybe: http://smarpl.com/content/esp8266-esp-201-module-freeing-gpio9-and-gpio10
+
+Datasheet for flash:
+https://www.winbond.com/resource-files/w25q40bw%20revf%20101113.pdf
+
+
+-------------------
+Mounting hole specs
+
+Decided to use M2 bolts for board, so using following to determine mounting hole sizes:
+https://blogs.mentor.com/tom-hausherr/blog/tag/pcb-mounting-holes/
+
+Using loose fit hole for board mount (long board):
+2.45 hole
+4.5 pad
+courtyard: 4.6
+
+For tight fit hole:
+2.1 hole
+4.1 pad
+courtyard: 4.6
+
+---------
+Via rules
+
+Recommend 8mil via : My personal rule is to make the drill size diameter the same as the width of the trace, and the pad size roughly twice the diameter.
+https://electronics.stackexchange.com/a/235692
+
+
+-----------
+Other rules
+
+* board-edge setback requirements (typically 10 to 25 mils (0.25mm to 0.6mm) that keep copper features away from the edge of the board.
+* From https://www.expresspcb.com/tips-for-designing-pcbs/:
+** 0.006" ??       : 0.1524mm : 6mil
+** 0.008" ??       : 0.2032mm : 8mil
+** 0.010″ 0.3 Amps : 0.254mm : 10mil
+** 0.015″ 0.4 Amps : 0.381mm : 15mil
+** 0.020″ 0.7 Amps : 0.508mm : 20mil
+** 0.025″ 1.0 Amps : 0.635mm : 25mil
+** 0.050″ 2.0 Amps : 1.27mm
+** 0.100″ 4.0 Amps
+** 0.150″ 6.0 Amps
+* It is a common practice to restrict the direction that traces run to horizontal, vertical, or 45 degree angles.
+
+
+
+
+
