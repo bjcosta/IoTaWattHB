@@ -23,3 +23,6 @@
 [submodule "deps/kicad/freerouting"]
 	path = deps/kicad/freerouting
 	url = https://github.com/freerouting/freerouting.git
+[submodule "deps/IoTaWatt.wiki"]
+	path = deps/IoTaWatt.wiki
+	url = https://github.com/boblemaire/IoTaWatt.wiki.git

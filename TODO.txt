@@ -7,6 +7,7 @@ Hardware:
 ** I added a I2C header to the board for this future extension
 ** http://akizukidenshi.com/download/ds/aosong/AM2321_e.pdf
 ** https://www.adafruit.com/product/374
+* Check if can use accurate VREF VTBIAS in the differential op-amp somehow instead of current solution
 
 Software:
 * Saw problem with pvoutput when big delay in sending
@@ -16,4 +17,51 @@ Software:
 	12/8/17 06:22:40 pvoutput: Pushing data to PVOutput failed, trying again in 60 sec
 * Create script to setup SD card (FAT formatted no MBR, config.txt in root, all other files in IotaWatt directory)
 * Add log cycling like syslog where creates new log and keeps one old log so we dont truncate completely. I.e. If rotating iota.log, first rm iota.log.1, cp iota.log iota.log.1, rm iota.log then recreate iota.log
+* Bug RTC not working properly and seems to not recover (at least not quickly)
+	I have noticed RTC not init properly a few times. Maybe the same as below but this is one capture:
+	Opening port
+	Port open
+	Soft WDT reset
+	ctx: cont 
+	sp: 3fff44b0 end: 3fff4730 offset: 01b0
+	>>>stack>>>
+	3fff4660:  3fff314c 3fff3108 be4be000 40210670  
+	3fff4670:  00000000 3ffe85a8 00000000 4020f82a  
+	3fff4680:  00000000 3ffe85a8 00000000 3fff3708  
+	3fff4690:  3fffdad0 3fff3108 3fff3130 4020fa54  
+	3fff46a0:  3fffdad0 3fff3108 3fff30f8 4020f008  
+	3fff46b0:  feefeffe 00000000 3fff30f8 4020b9a8  
+	3fff46c0:  00000000 00000000 00000000 feefeffe  
+	3fff46d0:  feefeffe feefeffe feefeffe feefeffe  
+	3fff46e0:  feefeffe feefeffe feefeffe feefeffe  
+	3fff46f0:  feefeffe feefeffe feefeffe feefeffe  
+	3fff4700:  feefeffe feefeffe feefeffe 3fff3708  
+	3fff4710:  3fffdad0 00000000 3fff3700 4021cd84  
+	3fff4720:  feefeffe feefeffe 3fff3710 4010070c  
+	<<<stack<<<
+	 ets Jan  8 2013,rst cause:2, boot mode:(1,6)
+	 ets Jan  8 2013,rst cause:4, boot mode:(1,6)
+	wdt reset
+	** Restart **
+	Serial Initialized
+	No clock yet: SPI started.
+	No clock yet: SD initialized.
+	No clock yet: Real Time Clock not initialized.
+	No clock yet: Write: 1, requestFrom: 1, read:224
+	... lots of lines like the above two then I restarted ...
+	** Restart **
+	Serial Initialized
+	No clock yet: SPI started.
+	No clock yet: SD initialized.
+	No clock yet: Real Time Clock not initialized.
+	No clock yet: Write: 1, requestFrom: 1, read:224
 
+	
+Tools:
+	# Already done with git submodules : Exception decoder for Arduino ESP:
+	Follow instructions here (basically setting up tools folder in C:\brendon\IoTaWattBasic\Firmware)
+	https://github.com/me-no-dev/EspExceptionDecoder
+	FTDI Driver (VCP Virtual COM Port):
+	* http://www.ftdichip.com/Drivers/VCP.htm
+	* http://www.ftdichip.com/Drivers/CDM/CDM%20v2.12.28%20WHQL%20Certified.zip
+	* http://www.ftdichip.com/Drivers/CDM/CDM21228_Setup.zip

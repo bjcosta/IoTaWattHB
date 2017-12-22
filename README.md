@@ -1,9 +1,27 @@
 # IoTaWattHB
 IoTaWatt Homebrew is a repository for experimentation with new ideas against the official IoTaWatt project developed by Bob Lemaire (https://github.com/boblemaire/IoTaWatt).
 
-This repository brings all 3rd party dependencies required to build IoTaWatt into a single folder for simple archiving/backup.
+This repository brings all 3rd party dependencies required to build IoTaWatt into a single folder for simple archiving/backup using git submodules. The commands to manage the submodules may differ with your version of git
 
-This is using git submodules to bring in all 3rd parties and the sources. The commands to manage the submodules may differ with your version of git
+
+-------
+Purpose
+
+I am using this project as a means to experiment with electronic and embedded design. I dont expect all the things I am going to try will work out.
+
+The IoTaWatt project works quite well as it is. However after playing with it a little, I decided I would like a few extra features and so this has given me a good project to run with. The main improvements I want to experiment with from base IotaWatt include:
+* Add POST support for the pvoutput.org website
+* Single voltage transformer for both powering the IoTaWatt and sampling the mains voltage
+* Pulse monitoring for monitoring electrcial smart meters, gas and water mains
+* Add push-button switch for manual interaction like resetting connected WiFi AP
+* Use accurate V-ref as both a reference but also to provide the BIAS so software doesn't have to "guess" the DC offset
+* Add support for temperature and humidity sensor
+* Use more accurate sampling technique (simultaneous/continuous sampling)
+
+A key problem that I came across in this work, is that the existing ESP8266 NodeMCU has very few available GPIO lines and IoTaWatt already uses them all.
+
+A real solution for this problem is moving to an ESP32 based board. Based on his comments in forums, this is in the future plans for Bob. I wanted to have my changes work with close to stock IoTaWatt so if I choose in the future I can revert back to stock firmware. For this reason, I decided to try and creatively work around the GPIO limitation (inspired by official IoTaWatts usage of GPIO for the status LED) and keep using the ESP8266.
+
 
 
 Building
